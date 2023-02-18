@@ -1,7 +1,13 @@
 public class Main {
     public static void main(String[] args) {
         MyData data = getMyData();
-        print(data.toString());
+        if(data==null){
+            print("object was null");
+        }else{
+            print(data.toString());
+        }
+
+
     }
 
     private static void print(String string) {
