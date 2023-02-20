@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c993f42c-98ae-4a8e-a7f3-59b33a59215f" name="Changes" comment="В абстрактный DataSource добавлен неабстрактный пустой метод saveData и реализован в классе сохранения в кэш&#10;&#10;CachedDataSource&#10;@Override&#10;    public void saveData(@NotNull MyData data) {&#10;        myData=data;&#10;    }&#10;Т.к. метод не абстрактный то в наследниках DataSource -&gt; CloudDataSource и Repository реализовывать его не нужно. Нюанс в том что в наследниках все равно есть возможность доступа к этому методу. А это лишнее.">
-      <change afterPath="$PROJECT_DIR$/src/MutableDataSource.java" afterDir="false" />
+    <list default="true" id="c993f42c-98ae-4a8e-a7f3-59b33a59215f" name="Changes" comment="Заменили абстрактный DataSource на два интерфейса: DataSource и MutableDataSource для разделения используемых методов в наследниках.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CachedDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CachedDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CloudDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CloudDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MutableDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MutableDataSource.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676895300403</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Заменили абстрактный DataSource на два интерфейса: DataSource и MutableDataSource для разделения используемых методов в наследниках.">
+      <created>1676897938064</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1676897938064</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -151,22 +153,7 @@
     <MESSAGE value="Можно пометить метод @Nullable и там где мы вызываем метод надо NonNull &#10;(@Nullable и там где мы вызываем метод надо NotNull) и тогда мы будем знать что метод вернет точно не нул и проверка не нужна будет." />
     <MESSAGE value="Класс repository &#10;получает в конструктор 2 разных обьекта датасоурса, один для работы по сети, другой по &#10;кешу. И нам все равно нужен метод получения данных, значит наследуемся от абстрактного &#10;класса и получаем метод получения данных getData и в нем уже пишем нашу логику. &#10;Сначала мы попробуем извлечь данные из кеша, если там ничего нет, то пойдем в сеть. Вы &#10;можете написать обратную логику, все зависит от конкретного проекта. Здесь лишь вопрос &#10;приоритета. Предположим у вас данные одни и те же и зачем лезть в сеть каждый раз если у &#10;вас уже в кеше все есть. Логично, неправда ли? Но если у вас в сети всегда могут быть &#10;данные посвежее, то тогда дергайте метод получения данных из сети сперва и если нет &#10;интернет соединения например или ошибка произошла и ничего не вернулось, то смотрим в &#10;кеш. Ладно, теперь у нас есть класс который смотрит в 2 датасорса. Мы написали что у нас &#10;из сети есть данные, а в кеше нет их. Попробуем вызвать метод у репозитория" />
     <MESSAGE value="В абстрактный DataSource добавлен неабстрактный пустой метод saveData и реализован в классе сохранения в кэш&#10;&#10;CachedDataSource&#10;@Override&#10;    public void saveData(@NotNull MyData data) {&#10;        myData=data;&#10;    }&#10;Т.к. метод не абстрактный то в наследниках DataSource -&gt; CloudDataSource и Repository реализовывать его не нужно. Нюанс в том что в наследниках все равно есть возможность доступа к этому методу. А это лишнее." />
-    <option name="LAST_COMMIT_MESSAGE" value="В абстрактный DataSource добавлен неабстрактный пустой метод saveData и реализован в классе сохранения в кэш&#10;&#10;CachedDataSource&#10;@Override&#10;    public void saveData(@NotNull MyData data) {&#10;        myData=data;&#10;    }&#10;Т.к. метод не абстрактный то в наследниках DataSource -&gt; CloudDataSource и Repository реализовывать его не нужно. Нюанс в том что в наследниках все равно есть возможность доступа к этому методу. А это лишнее." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Заменили абстрактный DataSource на два интерфейса: DataSource и MutableDataSource для разделения используемых методов в наследниках." />
+    <option name="LAST_COMMIT_MESSAGE" value="Заменили абстрактный DataSource на два интерфейса: DataSource и MutableDataSource для разделения используемых методов в наследниках." />
   </component>
 </project>
