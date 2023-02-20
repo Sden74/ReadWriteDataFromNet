@@ -9,6 +9,9 @@ public class Main {
 
         MyData data = repository.getData();
         print(data.toString());
+
+        data = repository.getData();
+        print(data.toString());
     }
 
     private static void print(Object string) {
