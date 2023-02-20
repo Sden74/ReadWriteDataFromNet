@@ -2,16 +2,20 @@ import org.jetbrains.annotations.NotNull;
 
 public class Main {
     public static void main(String[] args) {
-        DataSource repository = new Repository(
+        DataSource<MyData> myDataDataSource = new Repository(
                 new CloudDataSource(),
-                new CachedDataSource()
+                new CachedDataSource<>()
         );
-
-        MyData data = repository.getData();
+        DataSource<GeoData> geoDataDataSource = new GeoRepository(
+                new GeoDataCloudDataSource(),
+                new CachedDataSource<>()
+        );
+        MyData data = myDataDataSource.getData();
+        GeoData geoData = geoDataDataSource.getData();
         print(data.toString());
+        print(geoData.toString());
 
-        data = repository.getData();
-        print(data.toString());
+
     }
 
     private static void print(Object string) {

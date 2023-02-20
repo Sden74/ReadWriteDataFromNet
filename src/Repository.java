@@ -1,19 +1,20 @@
 import org.jetbrains.annotations.Nullable;
 
-public class Repository implements DataSource {
-    private final DataSource cloudDataSource;
-    private final MutableDataSource cachedDataSource;
+public class Repository<T> implements DataSource<T> {
+    private final DataSource<T> cloudDataSource;
+    private final MutableDataSource<T> cachedDataSource;
 
-    public Repository(DataSource cloudDataSource, MutableDataSource cachedDataSource) {
+    public Repository(DataSource<T> cloudDataSource, MutableDataSource<T> cachedDataSource) {
         this.cloudDataSource = cloudDataSource;
         this.cachedDataSource = cachedDataSource;
     }
 
 
 
+
     @Override
-    public @Nullable MyData getData() {
-        MyData result = cachedDataSource.getData();
+    public @Nullable T getData() {
+        T result = cachedDataSource.getData();
         if(result==null){
             print("no data in cache");
             result = cloudDataSource.getData();
